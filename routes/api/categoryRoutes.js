@@ -20,13 +20,12 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const data = await Category.findByPK(req.params.id,
-      {
-        include: [{ model: Product }]  
-      });
-      
-      if (!data) {
-        res.status(404).json({ message: 'No category found with that id.'}); 
-      }
+    {
+      include: [{ model: Product }]  
+    });
+    if (!data) {
+      res.status(404).json({ message: 'No category found with that id.'}); 
+    }
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
@@ -37,9 +36,9 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const data = await Category.create(
-      {
-        category_name: req.body.category_name,
-      });
+    {
+      category_name: req.body.category_name,
+    });
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
@@ -50,15 +49,15 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const data = await Category.update(req.body,
-      {
-        where: {
-          id: req.params.id,
-        }
-      });
+    {
+      where: {
+        id: req.params.id,
+      }
+    });
     if (!data) {
       res.status(404).json({ message: 'No category with this id'});
     }
-  res.status(200).json({ message: `The category's name was updated to ${req.body.category_name}.`});
+    res.status(200).json({ message: `The category's name was updated to ${req.body.category_name}.`});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -68,16 +67,15 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const data = await Category.destroy(
-      {
-        where: {
-          id: req.params.id,
-        }
-      });
-
+    {
+      where: {
+        id: req.params.id,
+      }
+    });
     if (!data) {
       res.status(404).json({ message: 'No category with this id'});
     }
-  res.status(200).json({ message: `The category, ${req.body.category_name}, has been deleted.`});
+    res.status(200).json({ message: `The category, ${req.body.category_name}, has been deleted.`});
   } catch (err) {
     res.status(500).json(err);
   }
