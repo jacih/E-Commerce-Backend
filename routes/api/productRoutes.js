@@ -26,22 +26,22 @@ router.get('/', async (req, res) => {
 // GET Route to find one product by id
 router.get('/:id', async (req, res) => {
   try {
-    const data = await Product.findByPK(req.params.id,
-      {
-        include: [
-          { 
-            model: Category,
-            attributes: ['id', 'category_name']
-          }, 
-          { 
-            model: Tag,
-            attributes: ['id', 'tag_name']
-          }
-        ]  
-      });
-      if (!data) {
-        res.status(404).json({ message: 'No product found with that id.'}); 
-      }
+    const data = await Product.findByPk(req.params.id,
+    {
+      include: [
+        { 
+          model: Category,
+          attributes: ['id', 'category_name']
+        }, 
+        { 
+          model: Tag,
+          attributes: ['id', 'tag_name']
+        }
+      ]  
+    });
+    if (!data) {
+      res.status(404).json({ message: 'No product found with that id.'}); 
+    }
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
@@ -62,7 +62,7 @@ router.post('/', async (req, res) => {
         });
         return ProductTag.bulkCreate(productTagIdArr);
       }
-     res.status(200).json(product)
+     res.status(200).json(product);
     })
     .then((productTagIds) => 
       res.status(200).json(productTagIds))
@@ -79,7 +79,7 @@ router.put('/:id', async (req, res) => {
       id: req.params.id,
     }
   }).then((product) => {
-    return ProductTag,findAll(
+    return ProductTag.findAll(
       {
         where: { product_id: req.params.id }
       });
@@ -119,9 +119,9 @@ router.delete('/:id', async (req, res) => {
         }
       });
     if (!data) {
-      res.status(404).json({ message: 'No product with this id'});
+      res.status(404).json({ message: 'No product with that id.'});
     }
-  res.status(200).json({ message: `The product, ${req.body.product_name}, has been deleted.`});
+  res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 // GET Route to find one tag by id;
 router.get('/:id', async (req, res) => {
   try {
-    const data = await Tag.findByPK(req.params.id,
+    const data = await Tag.findByPk(req.params.id,
     {
       include: [{ model: Product }]  
     });  
@@ -47,8 +47,11 @@ router.put('/:id', async (req, res) => {
     const data = await Tag.update(req.body, {
       where: {
         id: req.params.id
-      },
+      }
     });
+    if (!data) {
+      res.status(404).json({ message: 'No tag found with that id.'}); 
+    }
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
@@ -62,7 +65,10 @@ router.delete('/:id', async (req, res) => {
       where: {
         id: req.params.id
       }
-    })
+    });
+    if (!data) {
+      res.status(404).json({ message: 'No tag found with that id.'}); 
+    }
     res.json(200).json(data);
   } catch (err) {
     res.status(500).json(err);
