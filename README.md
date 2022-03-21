@@ -25,13 +25,15 @@ GOOGLE
 - [GoogleDrive Insomnia Delete Routes Walkthrough](https://drive.google.com/file/d/1sP3tXQSukhqb8o_uSgAyWndHddj6ez6a/view?usp=sharing)
 
 YOUTUBE
-- 
+- [YouTube Folder Structure, Database Creation and Seeding](https://youtu.be/M6hKR-7BZJM)
+- [YouTube Insomnia Testing - GET, POST, PUT Routes Walkthrough](https://youtu.be/cQbYb3Rzd1k)
+- [YouTube Insomnia Testing - DELETE Routes Walkthrough](https://youtu.be/4jRq6KKo8Mg)
 
 ### Code Snippets:
 
-![ORM Modeling Code Snippet]()
-![Database Seeding MySQL Tables]()
-![API Category Route Code Snippet]()
+![Ecomm_ORM_Model_Code Snippet](https://user-images.githubusercontent.com/97176042/159193518-ab1b9b02-99b9-4af7-9a59-5b9cc8e8ba7e.png)
+![Ecomm_DB_ Seeding Example](https://user-images.githubusercontent.com/97176042/159193530-b7b40f5b-67fe-4bfe-85c4-053700574d23.png)
+![Ecomm_API_CategoryRouter_Code Snippet](https://user-images.githubusercontent.com/97176042/159193536-882e110b-09fb-45e1-808f-c685b80d5aea.png)
 
 
 ## [Installation](#table-of-contents)
